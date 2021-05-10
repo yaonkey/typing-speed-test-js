@@ -1,0 +1,66 @@
+<html lang="ru">
+<head>
+  <title>Typing Speed Test</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Обычный контейнер (главная) -->
+    <div class="heading">Typing Speed Test</div>
+    <div class="heading_buttons">
+      <button class="heading_results">Результаты</button>
+      <button class="heading_choose">Язык</button>
+    </div>
+    <div class="header">
+      <div class="wpm">
+        <div class="header_text">Слов в минуту</div>
+        <div class="curr_wpm">100</div>
+      </div>
+      <div class="cpm">
+        <div class="header_text">Символов в минуту</div>
+        <div class="curr_cpm">100</div>
+      </div>
+      <div class="errors">
+        <div class="header_text">Ошибок</div>
+        <div class="curr_errors">0</div>
+      </div>
+      <div class="timer">
+        <div class="header_text">Время</div>
+        <div class="curr_time">60s</div>
+      </div>
+      <div class="accuracy">
+        <div class="header_text">% Точность</div>
+        <div class="curr_accuracy">100</div>
+      </div>
+    </div>
+    <div class="quote">Нажми на область ниже, чтобы начать игру.</div>
+    <textarea class="input_area" placeholder="Просто начни..." oninput="processCurrentText()"
+      onfocus="startGame()"></textarea>
+    <button class="restart_btn" onclick="resetValues()">Restart</button>
+  </div>
+  <div class="container_choose">
+    <!-- Контейнер для выбора языков -->
+    <div class="heading">Typing Speed Test<br>Выбор языка</div>
+    <div class="heading_buttons card">
+      <form>
+        <label for='lchoose'><input type='radio' class="choose option-input radio" id='one' name ='lchoose' value='php' checked/>PHP</label>
+        <label for='lchoose'><input type='radio' class="choose option-input radio" id='two' name ='lchoose' value='c'/>C</label>
+        <label for='lchoose'><input type='radio' class="choose option-input radio" name ='lchoose' value='cpp'/>C++</label>
+        <label for='lchoose'><input type='radio' class="choose option-input radio" name ='lchoose' value='python'/>Python</label>
+        <label for='lchoose'><input type='radio' class="choose option-input radio" name ='lchoose' value='javascript'/>Javascript</label>
+        <label for='lchoose'><input type='radio' class="choose option-input radio" name ='lchoose' value='html'/>HTML</label>
+        <label for='lchoose'><input type='radio' class="choose option-input radio" name ='lchoose' value='css'/>CSS</label>
+      </form>
+      <button class="start_button">Начать</button>
+    </div>
+  </div>
+  <div class="container_results">
+    <!-- Контейнер для просмотра результатов -->
+    <div class='show_results'></div>
+    <button class="back_to_main">Вернуться</button>
+  </div>
+  <script src='./func.js'></script>
+  <script src="./typing.js"></script>
+  <script src="./renderer.js"></script>
+</body>
+</html>
