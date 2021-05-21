@@ -1,6 +1,7 @@
 // библиотеки
 const fs              = require('fs');
-const SAVEFILENAME    = './typing-speed-test.results.json';
+const SAVEFILENAME   = './.typing-speed-test.results.json';
+// const SAVEFILENAME    = require(_SAVEFILENAME);
 
 // кодировка
 const CODING          = 'utf8';
@@ -529,8 +530,8 @@ $client->submitForm('Register', [
 'username' => 'username',
 'password' => 'password',
 ], 'POST');
-$this->fail('->submitForm() throws a \InvalidArgumentException if the form could not be found');
-} catch (\Exception $e) {
+$this->fail('->submitForm() throws a InvalidArgumentException if the form could not be found');
+} catch (Exception $e) {
 }
 }
 public function testSubmitPreserveAuth()
@@ -618,8 +619,7 @@ $client->setNextResponse(new Response('', 302, ['Location' => '/redirected']));
 $client->request('GET', 'http://www.example.com/foo/foobar');
 $client = $this->getBrowser();
 $client->setNextResponse(new Response('', 302, ['Location' => '//www.example.org/']));
-$client->request('GET', 'https://www.example.com/');
-`,
+$client->request('GET', 'https://www.example.com/');`,
 `public static function get_last_query($connection_name = null) {
 if ($connection_name === null) {
 return self::$_last_query;
@@ -747,8 +747,7 @@ $this->_table_alias = $alias;
 return $this;
 }`]
 code_c = [
-`
-#include <syscall/mm.h>
+`#include <syscall/mm.h>
 #include <heap.h>
 #include <log.h>
 struct bucket
@@ -913,8 +912,7 @@ return;
 log_error("kfree(): Invalid memory pointer or size: (%x, %d)", mem, size);
 ReleaseSRWLockExclusive(&heap->rw_lock);
 }`,
-`
-#include <common/auxvec.h>
+`#include <common/auxvec.h>
 #include <common/errno.h>
 #include <syscall/exec.h>
 #include <syscall/fork.h>
@@ -1099,8 +1097,7 @@ process_exit(1, 0);
 print_usage();
 process_exit(1, 0);
 }`,
-`
-#include "phenom/sysutil.h"
+`#include "phenom/sysutil.h"
 #include "phenom/memory.h"
 #include "phenom/stream.h"
 #include "phenom/log.h"
@@ -1184,8 +1181,7 @@ if (err) {
 ph_panic("stm_init: mutexattr ERRORCHECK:);
 }
 }
-PH_LIBRARY_INIT_PRI(stm_init, 0, 7)
-`]
+PH_LIBRARY_INIT_PRI(stm_init, 0, 7)`]
 code_cpp = [
     `#include <windows.h>
 #include <process.h>
@@ -1238,10 +1234,8 @@ if ( _tcsnicmp( _T("\\Device\\LanmanRedirector\\"),
 lpDeviceName, 25 ) == 0 ) {
 char cDriveLetter;
 DWORD dwParam;
-TCHAR lpSharedName[0x1000];
-`,
-`
-if ( _stscanf(  lpDeviceName, 
+TCHAR lpSharedName[0x1000];`,
+`if ( _stscanf(  lpDeviceName, 
 _T("\\Device\\LanmanRedirector\\;%c:%d\\%s"), 
 &cDriveLetter, 
 &dwParam, 
@@ -1271,10 +1265,8 @@ BOOL rc = FALSE;
 TCHAR lpDrive[3];
 _tcsncpy( lpDrive, lpFsFileName, 2 );
 lpDrive[2] = _T('\0');
-TCHAR lpDeviceName[0x1000];
-`,
-`
-if ( QueryDosDevice( lpDrive, lpDeviceName, 0x1000 ) != 0 )
+TCHAR lpDeviceName[0x1000];`,
+`if ( QueryDosDevice( lpDrive, lpDeviceName, 0x1000 ) != 0 )
 {
 if ( _tcsnicmp( _T("\\??\\"), lpDeviceName, 4 ) == 0 )
 {
@@ -1295,9 +1287,8 @@ return FALSE;
 _tcscpy( lpDeviceName,
 _tcscat( lpDeviceName, lpSharedName );
 }
-_tcscat( lpDeviceName, lpFsFileName + 2 );
-`, `
-deviceFileName = lpDeviceName;
+_tcscat( lpDeviceName, lpFsFileName + 2 );`, 
+`deviceFileName = lpDeviceName;
 rc = TRUE;
 }
 return rc;
@@ -1394,9 +1385,8 @@ Refresh();
 BOOL SystemThreadInformation::Refresh()
 {
 SystemHandleInformation hi( m_processId );
-BOOL rc = hi.SetFilter( _T("Thread"), TRUE );
-`, `
-m_ThreadInfos.clear();
+BOOL rc = hi.SetFilter( _T("Thread"), TRUE );`, 
+`m_ThreadInfos.clear();
 if ( !rc )
 return FALSE;
 THREAD_INFORMATION ti;
@@ -1998,8 +1988,7 @@ first_fort.latitude,
 first_fort.longitude)
 os._exit(1)
 fort = spinnable_pokestops[0]
-spin_pokestop(api, account, args, fort, location)
-`,
+spin_pokestop(api, account, args, fort, location)`,
 `log.info('Spun Pokestop with account %s, level %d.',
 account['username'],
 account['level'])
@@ -2192,8 +2181,7 @@ incept5b = _inception(incept5a, 832, 384, 192, 384, 48, 128, 3, 128)
 pool6 = _apool(incept5b,  7, 7, 1, 1, 'VALID')
 resh1 = tf.reshape(pool6, [-1, 1024])
 affn1 = _affine(resh1, 1024, 1000)
-return affn1
-`]
+return affn1`]
 code_javascript = [
     `(function(root, factory) {
 if (typeof define === 'function' && define.amd) {
@@ -2874,8 +2862,12 @@ const getResults = () => {
 // запись в файл сохранения результатов
 const saveResults = ( acc, cpm, wpm, err, lang ) => {
   currentDate = new Date().toLocaleString();
-  last_results = getResults();
-  last_results = Object.values(last_results).map(v => Object.values(v))
+  try{ 
+    last_results = getResults();
+    last_results = Object.values(last_results).map(v => Object.values(v))
+  } catch (err) {
+    last_results = [];
+  }
   temp_save = [
     currentDate,
     {
@@ -2887,7 +2879,7 @@ const saveResults = ( acc, cpm, wpm, err, lang ) => {
     }
   ];
   last_results.push(temp_save);
-  fs.writeFile(SAVEFILENAME, JSON.stringify(last_results));
+  fs.writeFile(SAVEFILENAME, JSON.stringify(last_results), function(){});
 };
 
 // выполнение метода при срабатывании события клика
@@ -2903,8 +2895,8 @@ heading_results.addEventListener('click', () => {
   container_results.style.display = 'flex';
   res = getResults();
   for (var i = 0; i <= res.length-1; i++){
-    elems = `<h1 class='res_header'>${res[i][0]}</h1><br>
-    <p>Язык: ${content[i][1].lang}</p>
+    elems = `<h1 class='res_header'>${content[i][1].lang}</h1><br>
+    <p>Дата: ${res[i][0]}</p>
     <p>Точность: ${content[i][1].acc}</p>
     <p>Ошибки: ${content[i][1].err}</p>
     <p>Символов в минуту: ${content[i][1].cpm}</p>

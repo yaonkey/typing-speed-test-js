@@ -4,7 +4,8 @@
   "description": "Typing speed test for programmers",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "test": "jest"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
@@ -25,6 +26,7 @@
     "python-shell": "^3.0.0"
   },
   "dependencies": {
+    "ffmpeg": "^0.0.4",
     "python-shell": "^3.0.0",
     "sass": "^1.32.12"
   }

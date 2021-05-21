@@ -11,6 +11,7 @@
   --font-color: #121212;
   --em-font-color: #121212;
   --border-color: #218095;
+  --button-color: #1495a0;
 }
 
 html, body {
@@ -22,8 +23,8 @@ body {
     text-align: center;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: var(--dark-blue);
-    color: var(--light);
+    background-color: var(--bg-color);
+    color: var(--dark-blue);
   }
   
   .container {
@@ -106,7 +107,7 @@ body {
   
   .timer, .errors,
   .accuracy, .cpm, .wpm {
-    background-color: var(--dark-light);
+    background-color: var(--button-color);
     height: 60px;
     width: 70px;
     margin: 8px;
@@ -117,34 +118,35 @@ body {
   
   .cpm, .wpm  {
     display: none;
-    color: var(--em-font-color);
+    color: var(--button-color);
   }
   
   .header_text {
     text-transform: uppercase;
     font-size: 0.6rem;
     font-weight: 600;
-    color: var(--em-font-color);
+    color: var(--dark-blue);
   }
   
   .curr_time, .curr_errors,
   .curr_accuracy, .curr_cpm,
   .curr_wpm {
     font-size: 2.75rem;
-    color: var(--em-font-color);
+    color: var(--dark-blue);
   }
   
   .quote {
-    background-color: var(--dark-light);
-    font-size: 1.5rem;
+    background-color: var(--button-color);
+    font-size: 2rem;
     margin: 10px;
     padding: 25px;
     box-shadow: black 5px 8px 5px;
-    color: var(--em-font-color);
+    color: var(--dark-blue);
   }
   
   .input_area {
-    background-color: var(--dark-light);
+    background-color: var(--button-color);
+    color: var(--dark-blue);
     height: 80px;
     width: 40%;
     font-size: 1.5rem;
@@ -177,7 +179,7 @@ body {
     margin-bottom: 20px;
     font-size: 1.5rem;
     padding: 10px;
-    background-color: var(--dark-light);
+    background-color: var(--button-color);
     height: 50px;
     width: 150px;
     margin: 8px;
@@ -192,7 +194,7 @@ body {
     margin-bottom: 20px;
     font-size: 1.5rem;
     padding: 10px;
-    background-color: var(--dark-light);
+    background-color: var(--button-color);
     height: 50px;
     width: 150px;
     margin: 8px;
@@ -252,12 +254,13 @@ body {
   height: 40px;
   width: 40px;
   position: absolute;
-  content: '✔';
+  content: '';
   display: inline-block;
   font-size: 26.66667px;
   text-align: center;
   line-height: 40px;
 }
+
 .option-input:checked::after {
   -webkit-animation: click-wave 0.65s;
   -moz-animation: click-wave 0.65s;

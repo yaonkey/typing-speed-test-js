@@ -1,6 +1,7 @@
 node_modules
 py/__pycache__
 .github
-testdapp-win32-x64
+typing-speed-test-win32-x64
+typing-speed-test-linux-x64
 venv
 typing-speed-test.results.json
